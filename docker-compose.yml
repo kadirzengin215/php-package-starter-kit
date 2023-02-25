@@ -1,0 +1,9 @@
+version: "3"
+
+services:
+    php:
+        build: ./.devcontainer
+        volumes:
+            - ./:/usr/src/myapp
+        tty: true
+        container_name: "myapp-php"

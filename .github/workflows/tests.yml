@@ -1,0 +1,50 @@
+name: 🧪 tests
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: 🚀 Build and 🧪 Test
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 🚚 Get latest code
+        uses: actions/checkout@v2
+
+      - name: 🔨 Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: "8.1"
+          #extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, sqlite, pdo_sqlite
+          coverage: none
+
+      - name: 🚚 Install Composer Dependencies
+        run: composer install --prefer-dist
+
+      - name: ✅ Validate composer.json and composer.lock
+        run: composer validate --strict
+
+      - name: 📦 Cache Composer packages
+        id: composer-cache
+        uses: actions/cache@v3
+        with:
+          path: vendor
+          key: ${{ runner.os }}-php-${{ hashFiles('**/composer.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-php-
+
+      - name: 🔨 Run fix suite
+        run: composer run-script fix
+
+      - name: 🧪 Run test suite
+        run: composer run-script test
+
+      - name: 🔎 Run analyse suite
+        run: composer run-script analyse

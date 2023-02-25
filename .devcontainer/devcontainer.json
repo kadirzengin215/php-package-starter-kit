@@ -1,0 +1,35 @@
+{
+    "name": "My app",
+    "dockerComposeFile": [
+        "../docker-compose.yml"
+    ],
+    "service": "php",
+    "workspaceFolder": "/usr/src/myapp",
+    // "features": {},
+    // "forwardPorts": [],
+    // "runServices": [],
+    // "shutdownAction": "none",
+    // "postCreateCommand": "cat /etc/os-release",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "bmewburn.vscode-intelephense-client",
+                "neilbrayfield.php-docblocker",
+                "MehediDracula.php-namespace-resolver",
+                "phproberto.vscode-php-getters-setters",
+                "phiter.phpstorm-snippets",
+                "DEVSENSE.composer-php-vscode",
+                "ms-azuretools.vscode-docker",
+                "eamodio.gitlens",
+                "formulahendry.code-runner"
+            ],
+            "settings": {
+                "editor.formatOnSave": true,
+                "[php]": {
+                    "editor.defaultFormatter": "bmewburn.vscode-intelephense-client"
+                }
+            }
+        }
+    },
+    "remoteUser": "root"
+}

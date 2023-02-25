@@ -1,0 +1,13 @@
+/.fleet
+/.idea
+/.vscode
+/vendor
+/node_modules
+npm-debug.log
+yarn-error.log
+.phpunit.result.cache
+.php-cs-fixer.cache
+.env
+.env.backup
+.env.production
+composer.lock
